@@ -10,8 +10,14 @@ config_version=5
 
 [application]
 
+config/name="Learning"
 run/main_scene="res://asteroid.tscn"
 config/features=PackedStringArray("4.2")
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [input]
 
