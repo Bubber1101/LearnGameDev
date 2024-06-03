@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqdwe61x1qcaf"]
+
+[ext_resource type="Texture2D" uid="uid://dia8pd2ma034" path="res://art/asteroid_1.png" id="1_hp031"]
+[ext_resource type="Script" path="res://mob.gd" id="1_wse2b"]
+[ext_resource type="Texture2D" uid="uid://x6rrapb003jd" path="res://art/asteroid_2.png" id="2_lu7qq"]
+[ext_resource type="Texture2D" uid="uid://bpmqkjcfovpwg" path="res://art/asteroid_3.png" id="3_3boxj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_et15p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hp031")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lu7qq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3boxj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r83pk"]
+radius = 16.74
+height = 62.43
+
+[node name="Mob" type="RigidBody2D" groups=["mobs"]]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_wse2b")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.17, 0.17)
+sprite_frames = SubResource("SpriteFrames_et15p")
+frame_progress = 0.969641
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.74, -11.215)
+shape = SubResource("CapsuleShape2D_r83pk")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
